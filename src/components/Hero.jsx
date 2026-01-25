@@ -3,7 +3,7 @@ import HeroImage from '../assets/hero.png'
 
 const Hero = () => {
   return (
-    <section className="hero">
+    <section id ="home" className="hero">
     <div className="hero-container">
     <div className="hero-left">
         <h1>
@@ -15,7 +15,7 @@ const Hero = () => {
             The all-in-one solution for social media sellers in Nepal.
           </p>
     <div className="hero-buttons">
-        <Button title="Get Started" backgroundColor="var(--text-dark)" textColor="var(--primary-white)"/>
+        <Button title="Get Started" backgroundColor="var(--text-dark)" textColor="var(--primary-white)" url ="/register"/>
         
         <Button title="View Demo"/>
     </div>

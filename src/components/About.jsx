@@ -1,6 +1,25 @@
+import React, { useState, useEffect } from "react";
+
 const About = () => {
+const [posts, setPosts] = useState([]);
+
+const fetchPostData = async ()=>{
+  try{
+  let res = await fetch("https://dummyjson.com/posts")
+  const data = await res.json()
+  console.log("data", data)
+  setPosts(data.posts)
+  }
+  catch(err){
+    console.log("err",err)
+  }
+}
+useEffect(()=>{
+  fetchPostData()
+},[])
+
   return (
-    <section className="about">
+    <section id ="about" className="about">
     <div className="about-container">
       <div className="about-left">
         <h2>Built for Social Sellers</h2>
@@ -15,6 +34,7 @@ const About = () => {
         </p>
         
       </div>
+{/*       
       <div className="about-right">
 
        <div className="about-card">
@@ -40,8 +60,15 @@ const About = () => {
     Supports Nepali workflows, payments, and practical business needs.
   </p>
 </div>
+     </div> */}
 
-
+      <div className = "about-right">
+      {posts && posts.length >0 && posts.map((post,key)=>(
+        <div className = "about-card">
+          <p style={{fontSize:12,fontWeight:600}}>{post.title}</p>
+          <p style={{fontSize:9}}>{post.body}</p>
+        </div>
+      ))}
       </div>
     </div>
     </section>
